@@ -1,0 +1,42 @@
+---
+- name: Install Arch on StarLabs Starlite MK IV
+  hosts: localhost
+  become: true
+  roles: 
+    - role: docker
+      vars:
+        docker_users: 
+          - andrej  
+    - bluetooth
+
+  tasks:
+
+    - name: Install ansible and friends
+      pacman:
+        name:
+          - ansible
+          - yamllint
+          - ansible-lint
+          - molecule
+          - molecule-docker
+
+    - name: Install desktop applications
+      pacman:
+          state: present
+          name:
+            - firefox
+            - bitwarden
+            - obsidian
+            - discord
+            - gparted
+            - syncthing
+            - yubikey-manager
+            - yubikey-manager-qt
+            - shutter
+            - gimp
+
+    - name: Install flatpak apps
+      community.general.flatpak:
+        name:  
+          - io.bassi.Amberol
+        state: present

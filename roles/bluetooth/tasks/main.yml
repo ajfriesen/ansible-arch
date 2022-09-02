@@ -1,0 +1,15 @@
+---
+    - name: Bluetooth headset
+      pacman:
+        state: present
+        name:
+          - bluez
+          - bluez-utils
+          - pavucontrol
+          - pipewire-pulse
+
+    - name: Enable Bluetooth service
+      ansible.builtin.systemd:
+        name: bluetooth.service
+        state: started
+        enabled: yes
