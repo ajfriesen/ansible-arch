@@ -40,3 +40,8 @@
         name:  
           - io.bassi.Amberol
         state: present
+
+    - name: Install gnome thingss
+      pacman:
+        name:
+          - webp-pixbuf-loader # webp thumbnails in gnome
