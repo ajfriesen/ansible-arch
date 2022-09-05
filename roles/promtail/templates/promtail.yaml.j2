@@ -17,3 +17,4 @@ scrape_configs:
     labels:
       job: pacman-logs
       __path__: /var/log/pacman.log
+      hostname: {{ ansible_nodename }}
