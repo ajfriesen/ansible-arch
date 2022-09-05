@@ -10,7 +10,7 @@
   become_user: andrej
 
 - name: Create pam config
-  shell: pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keystest
+  shell: pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keys
   become_user: andrej
 
 - name: Template
