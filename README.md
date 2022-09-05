@@ -26,7 +26,7 @@ Here my initial [config for the StarLabs Starlite MK IV](archinstall/starlite.js
 
 ## Ansible run
 
-ansible-playbook starlite.yaml -K
+`ansible-playbook starlite.yaml -K`
 
 ## AUR packages
 
@@ -76,6 +76,9 @@ yay --aur --sync \
 -  [ ] tailscale
 -  [ ] openvpn
 -  [ ] yubikey login
+-  [ ] fwdupd firmware thingy
+-  [ ] vim
+-  [ ] kubectl and helm env
 
 ## Development
 
