@@ -2,7 +2,6 @@
 
 # Ansible Arch [Desk|Lap]top
 
-ansible-arch-laptop
 ---
 
 This is a playbook for my StarLabs Starlite MK IV installing and configuring most packages I use on this device.
