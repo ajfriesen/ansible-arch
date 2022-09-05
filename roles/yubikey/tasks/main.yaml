@@ -17,3 +17,8 @@
   template:
     src: etc/pam.d/sudo
     dest: /etc/pam.d/sudo
+
+- name: Add yubikey gdm login template
+  template:
+    src: etc/pam.d/gdm-password
+    dest: /etc/pam.d/gdm-password
