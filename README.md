@@ -79,6 +79,7 @@ yay --aur --sync \
 -  [ ] fwdupd firmware thingy
 -  [ ] vim
 -  [ ] kubectl and helm env
+-  [ ] Deactivate promtail and possibly other services when metered connection is set
 
 ## Development
 
@@ -95,6 +96,10 @@ ansible syntax check:
 ansible lint, checks for "best" practises in ansible playbooks:
 
 `ansible-lint playbook.yaml`
+
+# Resources to check
+
+- https://github.com/hurricanehrndz/ansible-yubikey
 
 # Author
 
