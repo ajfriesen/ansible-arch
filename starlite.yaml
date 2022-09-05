@@ -47,3 +47,4 @@
       pacman:
         name:
           - webp-pixbuf-loader # webp thumbnails in gnome
+          - power-profiles-daemon # gnome power modes
