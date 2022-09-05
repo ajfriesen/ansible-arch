@@ -13,7 +13,7 @@
   shell: pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keys
   become_user: andrej
 
-- name: Template
+- name: Add yubikey sudo template
   template:
     src: etc/pam.d/sudo
     dest: /etc/pam.d/sudo
