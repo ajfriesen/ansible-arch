@@ -1,0 +1,19 @@
+---
+- name: Install U2F pam module
+  pacman:
+    name:
+      - pam-u2f
+    state: present
+
+- name: Create config dir
+  command: mkdir -p ~/.config/Yubico
+  become_user: andrej
+
+- name: Create pam config
+  shell: pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keystest
+  become_user: andrej
+
+- name: Template
+  template:
+    src: etc/pam.d/sudo
+    dest: /etc/pam.d/sudo

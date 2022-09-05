@@ -9,6 +9,7 @@
           - andrej  
     - bluetooth
     - role: promtail
+    - role: yubikey
 
   tasks:
 

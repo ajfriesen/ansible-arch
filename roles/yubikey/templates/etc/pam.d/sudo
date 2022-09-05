@@ -1,0 +1,7 @@
+#%PAM-1.0
+#auth            include         system-auth
+account         include         system-auth
+session         include         system-auth
+
+# Yubikey setup
+auth    required  pam_u2f.so cue origin=pam://{{ansible_nodename}} appid=pam://{{ansible_nodename}}
