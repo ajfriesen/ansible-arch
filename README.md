@@ -2,8 +2,6 @@
 
 # Ansible Arch [Desk|Lap]top
 
----
-
 This is a playbook for my StarLabs Starlite MK IV installing and configuring most packages I use on this device.
 
 **Goal**: I want to keep multiple machines in sync in regards of packages and condifugration.
