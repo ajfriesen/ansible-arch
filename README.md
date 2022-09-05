@@ -4,13 +4,13 @@
 
 This is a playbook for my StarLabs Starlite MK IV installing and configuring most packages I use on this device.
 
-**Goal**: I want to keep multiple machines in sync in regards of packages and condifugration.
+**Goal**: I want to keep multiple machines in sync in regards of packages and configuration.
 
 - StarLabs StarLite MK IV
 
-Comming soon (hopefully):
-- Tuxedo Aura15 (work, currently on Ubuntu 22.04)
+Comming soon (maybe|hopefully):
 - Desktop (Currently on Ubuntu 22.04)
+- Tuxedo Aura15 (work, currently on Ubuntu 22.04)
 
 ## Arch Setup
 
