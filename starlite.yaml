@@ -2,11 +2,11 @@
 - name: Install Arch on StarLabs Starlite MK IV
   hosts: localhost
   become: true
-  roles: 
+  roles:
     - role: docker
       vars:
-        docker_users: 
-          - andrej  
+        docker_users:
+          - andrej
     - bluetooth
     - role: promtail
     - role: yubikey
@@ -39,7 +39,7 @@
 
     - name: Install flatpak apps
       community.general.flatpak:
-        name:  
+        name:
           - io.bassi.Amberol
         state: present
 
