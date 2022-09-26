@@ -56,7 +56,8 @@ yay --aur --sync \
     google-chrome \
     youtube-music-bin \
     typora \
-    insomnia-bin
+    insomnia-bin \
+    slack-desktop \
 ```
 ## TODO
 
