@@ -13,6 +13,14 @@
 
   tasks:
 
+    - name: Add pacman.conf
+      ansible.builtin.copy:
+        src: pacman.conf
+        dest: /etc/pacman.conf
+        owner: root
+        group: root
+        mode: '0644'
+
     - name: Install ansible and friends
       pacman:
         name:
