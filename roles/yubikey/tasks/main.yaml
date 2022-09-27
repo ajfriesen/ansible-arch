@@ -13,24 +13,28 @@
   become_user: andrej
 
 - name: Check if file YubiKey config exists
-  ansible.builtin.stat: 
+  ansible.builtin.stat:
     path: /home/andrej/.config/Yubico/u2f_keys
   register: u2f_keys
 
 - name: Create pam config
-  ansible.builtin.shell: |
-    pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keys
+  ansible.builtin.shell: >
+    pamu2fcfg --verbose
+    --origin=pam://{{ ansible_nodename }}
+    --appid=pam://{{ ansible_nodename }} > ~/.config/Yubico/u2f_keys
   become_user: andrej
   when: not u2f_keys.stat.exists
 
 - name: Add yubikey sudo template
-  template:
+  ansible.builtin.template:
     src: etc/pam.d/sudo
     dest: /etc/pam.d/sudo
+    mode: '600'
   when: not u2f_keys.stat.exists
 
 - name: Add yubikey gdm login template
-  template:
+  ansible.builtin.template:
     src: etc/pam.d/gdm-password
     dest: /etc/pam.d/gdm-password
+    mode: '600'
   when: not u2f_keys.stat.exists

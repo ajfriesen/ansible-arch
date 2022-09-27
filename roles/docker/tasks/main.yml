@@ -1,19 +1,19 @@
 ---
 # tasks file for roles/docker
-  - name: Install docker packages
-    pacman:
-      name:
-        - docker
+- name: Install docker packages
+  pacman:
+    name:
+      - docker
 
-  - name: Ensure docker users are added to the docker group
-    user:
-      name: "{{ item }}"
-      groups: docker
-      append: true
-    with_items: "{{ docker_users }}"
+- name: Ensure docker users are added to the docker group
+  ansible.builtin.user:
+    name: "{{ item }}"
+    groups: docker
+    append: true
+  with_items: "{{ docker_users }}"
 
-  - name: Enable and start docker systemd service
-    ansible.builtin.systemd:
-      name: docker.service
-      state: started
-      enabled: yes
+- name: Enable and start docker systemd service
+  ansible.builtin.systemd:
+    name: docker.service
+    state: started
+    enabled: yes

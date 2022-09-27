@@ -1,13 +1,14 @@
 ---
 - name: Install promtail
-  pacman:
+  community.general.pacman:
     name:
       - promtail
 
 - name: Template
-  template:
+  ansible.builtin.template:
     src: promtail.yaml.j2
     dest: /etc/loki/promtail.yaml
+    mode: '0644'
   notify: Restart promtail
 
 - name: Start and enable promtail
