@@ -6,19 +6,31 @@
     state: present
 
 - name: Create config dir
-  command: mkdir -p ~/.config/Yubico
+  ansible.builtin.file:
+    path: /home/andrej/.config/Yubico
+    state: directory
+    mode: '0644'
   become_user: andrej
 
+- name: Check if file YubiKey config exists
+  ansible.builtin.stat: 
+    path: /home/andrej/.config/Yubico/u2f_keys
+  register: u2f_keys
+
 - name: Create pam config
-  shell: pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keys
+  ansible.builtin.shell: |
+    pamu2fcfg --verbose --origin=pam://{{ansible_nodename}} --appid=pam://{{ansible_nodename}} > ~/.config/Yubico/u2f_keys
   become_user: andrej
+  when: not u2f_keys.stat.exists
 
 - name: Add yubikey sudo template
   template:
     src: etc/pam.d/sudo
     dest: /etc/pam.d/sudo
+  when: not u2f_keys.stat.exists
 
 - name: Add yubikey gdm login template
   template:
     src: etc/pam.d/gdm-password
     dest: /etc/pam.d/gdm-password
+  when: not u2f_keys.stat.exists
