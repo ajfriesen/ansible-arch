@@ -54,7 +54,7 @@
           - io.posidon.Paper
         state: present
 
-    - name: Install thingss 
+    - name: Install things
       pacman:
         name:
           - webp-pixbuf-loader  # webp thumbnails in gnome
@@ -65,7 +65,7 @@
 
     # https://wiki.archlinux.org/title/Working_with_the_serial_console#Connect_using_a_terminal_emulator_program
     - name: Ensure to belong to uucp group for serial access
-      user:
+      ansible.builtin.user:
         name: andrej
         groups: uucp
         append: true
