@@ -22,7 +22,7 @@
         mode: '0644'
 
     - name: Install ansible and friends
-      pacman:
+      community.general.pacman:
         name:
           - ansible
           - yamllint
@@ -31,7 +31,7 @@
           - molecule-docker
 
     - name: Install desktop applications
-      pacman:
+      community.general.pacman:
         state: present
         name:
           - firefox
@@ -55,7 +55,7 @@
         state: present
 
     - name: Install things
-      pacman:
+      community.general.pacman:
         name:
           - webp-pixbuf-loader  # webp thumbnails in gnome
           - power-profiles-daemon  # gnome power modes
