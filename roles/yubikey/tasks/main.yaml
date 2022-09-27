@@ -9,7 +9,7 @@
   ansible.builtin.file:
     path: /home/andrej/.config/Yubico
     state: directory
-    mode: '0644'
+    mode: '0744'
   become_user: andrej
 
 - name: Check if file YubiKey config exists
@@ -29,12 +29,12 @@
   ansible.builtin.template:
     src: etc/pam.d/sudo
     dest: /etc/pam.d/sudo
-    mode: '600'
+    mode: '644'
   when: not u2f_keys.stat.exists
 
 - name: Add yubikey gdm login template
   ansible.builtin.template:
     src: etc/pam.d/gdm-password
     dest: /etc/pam.d/gdm-password
-    mode: '600'
+    mode: '644'
   when: not u2f_keys.stat.exists
