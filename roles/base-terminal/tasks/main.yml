@@ -5,6 +5,7 @@
     name:
       - less
       - nvim
+      - openssh
 
 - name: Create symlink for vim to nvim
   ansible.builtin.file:
