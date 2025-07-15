@@ -1,0 +1,15 @@
+---
+- name: Install basic terminal packages
+  pacman:
+    state: present
+    name:
+      - less
+      - nvim
+
+- name: Create symlink for vim to nvim
+  ansible.builtin.file:
+    src: /usr/bin/nvim
+    dest: /usr/bin/vim
+    owner: root
+    group: root
+    state: link

@@ -1,0 +1,17 @@
+---
+- name: Install power management
+  pacman:
+    state: present
+    name:
+      - power-profiles-daemon
+      - linux-firmware
+      - fprint
+      - fwupd
+
+- name: Enable power management daemon
+  ansible.builtin.systemd:
+    name: power-profile-daemon
+    state: started
+    enabled: yes
+
+

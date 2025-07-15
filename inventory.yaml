@@ -1,0 +1,19 @@
+---
+all:
+  hosts:
+    desktop:
+      ansible_connection: local
+    starlite:
+      ansible_connection: local
+    framework13:
+      ansible_connection: local
+
+    children:
+      desktops:
+        hosts:
+          desktop:
+
+      laptops:
+        hosts:
+          starlite:
+          framework13:

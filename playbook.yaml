@@ -1,0 +1,15 @@
+---
+
+- name: Configure All Machines
+  hosts: all
+  become: yes
+  roles:
+    - base-terminal
+
+- name: Configure Laptops
+  hosts: laptops
+  become: yes
+  roles:
+    - starlite-mk-iv
+
+

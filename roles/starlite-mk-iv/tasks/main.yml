@@ -1,0 +1,10 @@
+---
+- name: Install starlite specific packages
+  pacman:
+    state: present
+    name:
+      - linux-firmware
+      - fwupd
+
+
+
