@@ -7,9 +7,11 @@
     - base-terminal
 
 - name: Configure Laptops
-  hosts: laptops
+  hosts: starlite
   become: yes
   roles:
     - starlite-mk-iv
+    - hyprland
+    - base-desktop
 
 

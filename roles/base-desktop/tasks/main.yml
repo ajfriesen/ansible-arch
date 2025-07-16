@@ -1,0 +1,9 @@
+---
+- name: Instal basic desktop packages
+  pacman:
+    state: present
+    name:
+      - firefox
+      - bitwarden
+      - freecad
+

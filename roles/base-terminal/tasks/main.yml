@@ -6,6 +6,7 @@
       - less
       - nvim
       - openssh
+      - zsh
 
 - name: Create symlink for vim to nvim
   ansible.builtin.file:
@@ -14,3 +15,12 @@
     owner: root
     group: root
     state: link
+
+- name: Include yay installation for AUR packages
+  ansible.builtin.import_tasks: yay.yml
+
+
+- name: Setup my user
+  ansible.builtin.user:
+    name: andrej
+    shell: /usr/bin/bash

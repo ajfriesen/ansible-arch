@@ -1,0 +1,29 @@
+---
+- name: Check if yay is installed
+  command: "pacman -Q yay"
+  register: yay_check
+  changed_when: false
+  ignore_errors: true
+
+- name: Install yay from AUR
+  when: yay_check.rc !=0
+  become: no
+  block:
+    - name: Clone yay repo
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "/tmp/yay"
+        clone: yes
+        update: yes
+
+    - name: Build and install yay with makepkg
+      command: "makepkg -si --noconfirm"
+      args:
+        chdir: "/tmp/yay"
+        creates: "/usr/bin/yay"
+
+- name: Clean up yay build directory
+  file:
+    path: "/tmp/yay"
+    state: absent
+  become: no

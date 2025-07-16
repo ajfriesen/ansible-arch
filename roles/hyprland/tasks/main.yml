@@ -1,0 +1,22 @@
+---
+- name: Install hyprland ecosystem
+  pacman:
+    state: present
+    name:
+      - hyprland
+      - wofi
+      - dolphin
+      - kitty
+      - uwsm
+      - libnewt
+      - noto-fonts
+      - otf-font-awesome
+      - waybar
+
+- name: Enable waybar
+  become: no
+  ansible.builtin.systemd_service:
+    name: waybar.service
+    state: started
+    enabled: true
+    scope: user
