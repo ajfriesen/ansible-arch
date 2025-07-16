@@ -4,6 +4,9 @@
     state: present
     name:
       - hyprland
+      - hyprlock
+      - hypridle
+      - hyprpaper
       - wofi
       - dolphin
       - kitty
@@ -20,3 +23,14 @@
     state: started
     enabled: true
     scope: user
+
+
+- name: Install AUR packages for hyprland
+  become: no
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    aur_only: yes
+    use: yay
+    name:
+      - waypaper

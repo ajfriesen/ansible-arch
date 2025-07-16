@@ -1,0 +1,11 @@
+---
+- name: Install laptop things
+  pacman:
+    state: present
+    name:
+      - brightnessctl 
+      - power-profiles-daemon
+      
+
+
+

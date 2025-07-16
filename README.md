@@ -23,6 +23,9 @@ Started with Archiso:
 I used the official [archinstall](https://wiki.archlinux.org/title/Archinstall) scrip to initally setup my device.
 Here my initial [config for the StarLabs Starlite MK IV](archinstall/starlite.json).
 
+## Install dependencies
+
+`aansible-galaxy install -r requirements.yaml`
 
 ## Ansible run
 
