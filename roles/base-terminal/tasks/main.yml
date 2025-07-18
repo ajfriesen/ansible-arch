@@ -53,3 +53,20 @@
       - typora
       - libreoffice-fresh
 
+########################## snapper
+
+- name: Install snapper stuff
+  pacman:
+    state: present
+    name:
+      - snap-pac
+      - grub-btrfs
+
+- name: Enable grub-btrfs
+  ansible.builtin.systemd_service:
+    name: grub-btrfsd
+    state: started
+    enabled: yes
+
+
+
