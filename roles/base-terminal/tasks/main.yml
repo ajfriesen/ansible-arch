@@ -8,6 +8,7 @@
       - openssh
       - zsh
       - ghostty
+      - man
 
 - name: Create symlink for vim to nvim
   ansible.builtin.file:
