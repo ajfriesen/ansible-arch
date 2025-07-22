@@ -17,6 +17,15 @@
     group: root
     state: link
 
+
+- name: Create chezmoi.toml
+  ansible.builtin.copy:
+    src: chezmoi.toml
+    dest: /home/andrej/.config/chezmoi/chezmoi.toml
+    owner: andrej
+    group: andrej
+    mode: '644'
+
 - name: Include yay installation for AUR packages
   ansible.builtin.import_tasks: yay.yml
 
