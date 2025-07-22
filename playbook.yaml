@@ -15,4 +15,9 @@
     - base-desktop
     - laptop
 
-
+- name: Configure Desktop
+  hosts: archdesktop
+  become: yes
+  roles:
+    - hyprland
+    - base-desktop
