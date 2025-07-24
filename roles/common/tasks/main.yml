@@ -29,11 +29,6 @@
 - name: Include yay installation for AUR packages
   ansible.builtin.import_tasks: yay.yml
 
-- name: Setup my user
-  ansible.builtin.user:
-    name: andrej
-    shell: /usr/bin/bash
-
 - name: Create the `aur_builder` user
   become: yes
   ansible.builtin.user:
