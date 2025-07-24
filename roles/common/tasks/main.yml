@@ -9,6 +9,12 @@
       - zsh
       - ghostty
       - man
+      - nerd-fonts
+      - lazygit
+      - curl
+      - wget
+      - ripgrep
+      - fd
 
 - name: Create symlink for vim to nvim
   ansible.builtin.file:
