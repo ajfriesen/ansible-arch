@@ -7,6 +7,30 @@
       - bitwarden
       - freecad
       - thunderbird
+      - syncthing
+      - freecad
+      - signal-desktop
+      - transmission-gtk
+      - calibre
+      - gimp
+      - obs-studio
+      - kdenlive
+      - discord
+      - teamspeak3
 
-
+- name: Install desktop app AUR
+  become: no
+  become_user: aur_builder
+  kewlfft.aur.aur:
+    state: present
+    aur_only: yes
+    use: yay
+    name:
+      - google-chrome
+      - zsa-keymapp-bin
+      - bambustudio-bin
+      # - kopia
+      - btrfs-assistant
+      - typora
+      - libreoffice-fresh
 
