@@ -15,6 +15,16 @@
       - wget
       - ripgrep
       - fd
+      - tailscale
+
+- name: Configure passwordless sudo for ansible user
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/ansible-nopasswd
+    line: 'andrej ALL=(ALL:ALL) NOPASSWD: ALL'
+    state: present
+    mode: '0440'
+    create: yes
+    validate: 'visudo -c -f %s'
 
 - name: Create symlink for vim to nvim
   ansible.builtin.file:
