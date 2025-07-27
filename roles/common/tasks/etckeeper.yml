@@ -1,0 +1,51 @@
+---
+    - name: "Installation: Ensure etckeeper and git are installed"
+      ansible.builtin.package:
+        name:
+          - etckeeper
+          - git # VCS for etckeeper
+        state: present
+
+    - name: "Configuration: Set pacman as the package manager in etckeeper.conf"
+      ansible.builtin.lineinfile:
+        path: /etc/etckeeper/etckeeper.conf
+        regexp: '^{{ item.key }}='
+        line: '{{ item.key }}={{ item.value }}'
+      loop:
+        - { key: 'HIGHLEVEL_PACKAGE_MANAGER', value: 'pacman' }
+        - { key: 'LOWLEVEL_PACKAGE_MANAGER', value: 'pacman' }
+      notify: Restart etckeeper timer
+
+    - name: "Usage: Initialize etckeeper repository in /etc"
+      ansible.builtin.command:
+        cmd: etckeeper init
+        creates: /etc/.git # This makes the task idempotent
+
+    - name: "Usage: Ensure root user comment is set in /etc/passwd to avoid commit failure"
+      ansible.builtin.user:
+        name: root
+        comment: root
+        state: present
+
+    - name: "Usage: Check if initial commit has been made"
+      ansible.builtin.command:
+        cmd: git -C /etc rev-parse HEAD
+      register: initial_commit_check
+      failed_when: false
+      changed_when: false
+
+    - name: "Usage: Make the initial commit"
+      ansible.builtin.command:
+        cmd: etckeeper commit "Initial commit managed by Ansible"
+      when: initial_commit_check.rc != 0
+
+    - name: "Systemd: Enable and start the etckeeper timer for daily commits"
+      ansible.builtin.systemd_service:
+        name: etckeeper.timer
+        state: started
+        enabled: true
+
+    - name: Restart etckeeper timer
+      ansible.builtin.systemd_service:
+        name: etckeeper.timer
+        state: restarted

@@ -87,3 +87,5 @@
 
 
 
+- name: Include etckeeper
+  ansible.builtin.import_tasks: etckeeper.yml
